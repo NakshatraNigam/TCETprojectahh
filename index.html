@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SchemaMorph 3NF | Interactive Database Normalization Studio</title>
+  
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,400;0,600;0,800;1,400&family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body class="light-theme">
+
+  <!-- Ambient Animated Glassmorphism Canvas & Blobs -->
+  <canvas id="ambientCanvas" class="ambient-particle-canvas"></canvas>
+  <canvas id="confettiCanvas" class="confetti-canvas"></canvas>
+
+  <div class="bg-mesh-container">
+    <div class="mesh-blob mesh-blob-1"></div>
+    <div class="mesh-blob mesh-blob-2"></div>
+    <div class="mesh-blob mesh-blob-3"></div>
+  </div>
+
+  <!-- App Header -->
+  <header class="app-header">
+    <div class="header-brand">
+      <div class="brand-icon pulse-glow">⚡</div>
+      <div class="brand-info">
+        <h1>SchemaMorph 3NF <span class="academic-tag">TCET • Module 5</span></h1>
+        <div class="header-meta">Thakur College Of Engineering & Technology • Group Presentation (Roll No. 49 to 60)</div>
+      </div>
+    </div>
+
+    <!-- Navigation Tabs -->
+    <nav class="nav-tabs">
+      <button class="nav-tab-btn active" data-tab="storyboard">🎬 Morph Studio</button>
+      <button class="nav-tab-btn" data-tab="anomaly">💥 Anomaly Crash-Lab</button>
+      <button class="nav-tab-btn" data-tab="graph">🕸️ Dependency Graph</button>
+      <button class="nav-tab-btn" data-tab="sandbox">🎮 Decomposition Sandbox</button>
+      <button class="nav-tab-btn" data-tab="sql">📜 SQL & Schema</button>
+    </nav>
+
+    <!-- Header Actions -->
+    <div class="header-actions">
+      <button id="themeToggleBtn" class="icon-btn" title="Toggle Cyber Dark / Frost Glass Light Mode">🌓</button>
+      <button id="soundToggleBtn" class="icon-btn" title="Sound Effects Enabled">🔊</button>
+      <button id="shortcutsBtn" class="icon-btn" title="Keyboard Shortcuts (Press '?')">⌨️</button>
+      <button id="vivaModalBtn" class="ctrl-btn viva-action-btn" onclick="window.presenterEngine.openVivaModal()">
+        <span>🎓</span> Viva Defense Hub
+      </button>
+      <button class="primary-action-btn pulse-glow" onclick="window.presenterEngine.toggleTeleprompter()">
+        <span>🎙️</span> Speakers (49–60)
+      </button>
+    </div>
+  </header>
+
+  <!-- Main Content Area -->
+  <main class="main-wrapper">
+
+    <!-- 12-Speaker Presenter Deck & Timer HUD -->
+    <div id="presenterBarContainer"></div>
+
+    <!-- ====================================================================
+         1. MORPHING STORYBOARD VIEW
+         ==================================================================== -->
+    <section id="view_storyboard" class="view-section active">
+      <!-- Toolbar & Stepper -->
+      <div class="glass-panel storyboard-toolbar">
+        <div class="stage-stepper" id="stageStepper">
+          <!-- Dynamically populated step nodes -->
+        </div>
+
+        <div class="playback-controls">
+          <button id="prevStageBtn" class="ctrl-btn" onclick="window.app.prevStage()">
+            <span>◀</span> Previous Form
+          </button>
+          <button id="autoPlayBtn" class="ctrl-btn" onclick="window.app.toggleAutoPlay()">
+            ▶️ Auto Morph
+          </button>
+          <button id="nextStageBtn" class="ctrl-btn primary" onclick="window.app.nextStage()">
+            Advance to Next Form <span>▶</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Real-Time Relational Telemetry HUD Bar -->
+      <div class="glass-panel telemetry-hud-bar">
+        <div class="telemetry-card">
+          <div class="telemetry-label">Data Redundancy</div>
+          <div class="telemetry-value-row">
+            <span id="redundancyScore" class="telemetry-num" style="color: #E11D48;">98%</span>
+            <div class="telemetry-mini-bar">
+              <div id="redundancyBarFill" class="telemetry-bar-fill" style="width: 98%; background: #E11D48;"></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="telemetry-divider"></div>
+
+        <div class="telemetry-card">
+          <div class="telemetry-label">ACID Integrity Score</div>
+          <div class="telemetry-value-row">
+            <span id="acidScore" class="telemetry-num" style="color: #059669;">15%</span>
+            <div class="telemetry-mini-bar">
+              <div id="acidBarFill" class="telemetry-bar-fill" style="width: 15%; background: #059669;"></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="telemetry-divider"></div>
+
+        <div class="telemetry-card">
+          <div class="telemetry-label">Anomaly Risk Vector</div>
+          <div class="telemetry-value-row">
+            <span id="anomalyRiskPill" class="telemetry-pill-badge risk-critical">🚨 Critical Risk</span>
+          </div>
+        </div>
+
+        <div class="telemetry-divider"></div>
+
+        <div class="telemetry-card">
+          <div class="telemetry-label">Modular Relations</div>
+          <div class="telemetry-value-row">
+            <span id="relationsCount" class="telemetry-num" style="color: #2563EB;">1 Monolithic Table</span>
+          </div>
+        </div>
+
+        <div class="telemetry-divider"></div>
+
+        <div class="telemetry-card">
+          <div class="telemetry-label">Normal Form Stage</div>
+          <div class="telemetry-value-row">
+            <span id="telemetryStageBadge" class="stage-pill badge-partial">UNF</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Stage Explanation & Mathematical Justification Card -->
+      <div class="glass-panel stage-info-card glass-panel-glow">
+        <div class="stage-info-content">
+          <div class="stage-badge-row">
+            <span id="stagePill" class="stage-pill badge-partial">Form Indicator</span>
+            <span class="academic-tag">Module 5 Formal Justification</span>
+          </div>
+          <h2 id="stageTitle" class="stage-title">Transformation Stage</h2>
+          <p id="stageDesc" class="stage-desc">Description of table state.</p>
+          <div id="stageJustification" class="justification-highlight">
+            <strong>Justification:</strong> Explanation of relational integrity rules.
+          </div>
+        </div>
+
+        <div class="stage-math-box">
+          <div class="math-header">📐 Mathematical Theorem & Axioms</div>
+          <div id="stageMathFormula" class="math-formula">Formula Notation</div>
+          <ul id="stageRulesList" class="math-rule-list">
+            <!-- Rules list -->
+          </ul>
+        </div>
+      </div>
+
+      <!-- Visual Morph Tables Canvas -->
+      <div class="tables-morph-area">
+        <div id="tablesDisplayGrid" class="tables-grid grid-1">
+          <!-- Dynamically rendered schema tables with interactive hover & badges -->
+        </div>
+      </div>
+    </section>
+
+    <!-- ====================================================================
+         2. ANOMALY CRASH-LAB VIEW
+         ==================================================================== -->
+    <section id="view_anomaly" class="view-section">
+      <div class="anomaly-grid">
+        <!-- Scenario Selector -->
+        <div class="glass-panel anomaly-selector-panel">
+          <div style="font-size: 0.85rem; font-weight: 800; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 0.05em;">
+            Select Anomaly Test Arena
+          </div>
+          <div id="anomalySelectorList" style="display:flex; flex-direction:column; gap:0.75rem;">
+            <!-- Rendered by anomalySimulator.js -->
+          </div>
+        </div>
+
+        <!-- Simulation Arena -->
+        <div id="anomalyArenaContainer" class="anomaly-arena">
+          <!-- Rendered by anomalySimulator.js -->
+        </div>
+      </div>
+    </section>
+
+    <!-- ====================================================================
+         3. INTERACTIVE DEPENDENCY GRAPH VIEW
+         ==================================================================== -->
+    <section id="view_graph" class="view-section">
+      <div class="graph-view-container">
+        <!-- SVG Canvas Area -->
+        <div class="glass-panel graph-canvas-panel">
+          <div class="graph-filters-bar">
+            <button class="graph-filter-chip active" data-filter="all" onclick="window.depGraph.setFilter('all')">All FDs</button>
+            <button class="graph-filter-chip chip-partial" data-filter="partial" onclick="window.depGraph.setFilter('partial')">Partial (2NF Violations)</button>
+            <button class="graph-filter-chip chip-transitive" data-filter="transitive" onclick="window.depGraph.setFilter('transitive')">Transitive (3NF Violations)</button>
+            <button class="graph-filter-chip chip-full" data-filter="full" onclick="window.depGraph.setFilter('full')">Full Dependencies</button>
+          </div>
+
+          <div class="graph-svg-wrapper">
+            <svg id="dependencySvgCanvas"></svg>
+          </div>
+        </div>
+
+        <!-- Detail Sidebar -->
+        <div class="glass-panel graph-sidebar-info">
+          <div style="font-size: 0.85rem; font-weight: 800; color: var(--text-secondary); text-transform: uppercase;">
+            Dependency Inspector
+          </div>
+
+          <div>
+            <h3 id="graphDetailTitle" style="font-size: 1.05rem; font-weight: 800; color: #0F172A; margin-bottom: 0.4rem;">
+              Click any node or arrow
+            </h3>
+            <div id="graphDetailFormula" class="math-formula" style="font-size: 0.82rem;">
+              Interactive Laser Graph Active
+            </div>
+            <p id="graphDetailDesc" style="font-size: 0.88rem; color: var(--text-secondary); line-height: 1.55;">
+              Select any connecting arrow or attribute card in the canvas to inspect its mathematical definition, closure X⁺, and transformation role.
+            </p>
+          </div>
+
+          <hr style="border: none; border-top: 1px solid var(--glass-border-subtle);" />
+
+          <div style="font-size: 0.8rem; font-weight: 800; color: var(--text-muted); text-transform: uppercase;">
+            Color & Laser Legend
+          </div>
+
+          <div class="fd-legend-item">
+            <div class="legend-color-dot" style="background: var(--accent-rose);"></div>
+            <div>
+              <div class="legend-title">Partial Dependency (2NF Violation)</div>
+              <div class="legend-desc">Non-key attribute determined by a proper subset of the composite candidate key {StudentID, CourseID}.</div>
+            </div>
+          </div>
+
+          <div class="fd-legend-item">
+            <div class="legend-color-dot" style="background: var(--accent-purple);"></div>
+            <div>
+              <div class="legend-title">Transitive Dependency (3NF Violation)</div>
+              <div class="legend-desc">Non-key attribute determined indirectly by another non-key attribute (X → Y → Z).</div>
+            </div>
+          </div>
+
+          <div class="fd-legend-item">
+            <div class="legend-color-dot" style="background: var(--accent-emerald);"></div>
+            <div>
+              <div class="legend-title">Full Dependency (Valid Relational Key)</div>
+              <div class="legend-desc">Attribute strictly requires the complete composite key {StudentID, CourseID} for determination.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ====================================================================
+         4. INTERACTIVE DECOMPOSITION SANDBOX GAME
+         ==================================================================== -->
+    <section id="view_sandbox" class="view-section">
+      <div class="sandbox-container">
+        <!-- HUD Header -->
+        <div class="glass-panel sandbox-header-hud">
+          <div>
+            <div class="academic-tag" style="margin-bottom: 4px;">Interactive Laboratory</div>
+            <h2 style="font-size: 1.35rem; font-weight: 800; color: #0F172A;">Normalization Sandbox Challenge</h2>
+          </div>
+
+          <div class="sandbox-stats-group">
+            <div class="stat-box">
+              <span id="sandboxScore" class="stat-value">0</span>
+              <span class="stat-label">Total XP</span>
+            </div>
+            <div class="stat-box">
+              <span id="sandboxStreak" class="stat-value">0</span>
+              <span class="stat-label">Streak 🔥</span>
+            </div>
+            <div class="stat-box">
+              <span id="sandboxTargetForm" class="stat-value" style="color: #7C3AED;">1NF</span>
+              <span class="stat-label">Target Form</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Mission Card -->
+        <div class="sandbox-mission-card">
+          <div class="mission-text">
+            <h4 id="sandboxMissionTitle">Mission Loading...</h4>
+            <p id="sandboxMissionDesc">Instruction details</p>
+          </div>
+          <div style="display: flex; gap: 0.75rem;">
+            <button class="ctrl-btn" onclick="window.sandboxLab.resetCurrentMission()">Reset</button>
+            <button class="primary-action-btn pulse-glow" onclick="window.sandboxLab.verifySolution()">
+              ✨ Verify Decomposition
+            </button>
+          </div>
+        </div>
+
+        <!-- Feedback Alert Box -->
+        <div id="sandboxFeedbackBox" style="display: none;"></div>
+
+        <!-- Sandbox Attribute Selection Board -->
+        <div class="sandbox-board">
+          <!-- Available Attributes Pool -->
+          <div class="sandbox-column">
+            <div class="sandbox-column-title">
+              <span>📦 Available Relation Attributes</span>
+              <span style="font-size: 0.78rem; color: var(--text-muted);">Click to Add</span>
+            </div>
+            <div id="sandboxAttrPool" class="attribute-tags-pool"></div>
+          </div>
+
+          <!-- Decomposed Target Entity Slot -->
+          <div class="sandbox-column">
+            <div class="sandbox-column-title">
+              <span>🎯 Decomposed Target Entity Slot</span>
+              <span style="font-size: 0.78rem; color: var(--accent-primary);">Selected Columns</span>
+            </div>
+            <div id="sandboxSelectedPool" class="attribute-tags-pool"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ====================================================================
+         5. SQL & SCHEMA COMPARISON STUDIO
+         ==================================================================== -->
+    <section id="view_sql" class="view-section">
+      <!-- Live SQL Query Simulator Console -->
+      <div class="glass-panel sql-query-tester-panel">
+        <div class="sql-tester-header">
+          <div class="sql-tester-title">
+            <span>⚡ Interactive Live SQL Query Simulator</span>
+            <span class="academic-tag" style="background: #ECFDF5; color: #059669; border-color: #A7F3D0;">In-Memory Execution</span>
+          </div>
+          <div class="sql-query-presets">
+            <span style="font-size: 0.8rem; font-weight: 700; color: var(--text-muted);">Sample Queries:</span>
+            <button class="query-chip-btn" onclick="window.app.runSampleQuery('join')">Natural JOIN (Students ⋈ Enrollments)</button>
+            <button class="query-chip-btn" onclick="window.app.runSampleQuery('insert')">Atomic INSERT (Course CS601)</button>
+            <button class="query-chip-btn" onclick="window.app.runSampleQuery('update')">Single-Tuple UPDATE (Instructor Office)</button>
+            <button class="query-chip-btn" onclick="window.app.runSampleQuery('instructors')">Faculty with Departments</button>
+          </div>
+        </div>
+
+        <!-- Query Execution Result Box -->
+        <div id="sqlQueryResultArea" class="sql-result-area" style="display: none;">
+          <div class="sql-result-meta" id="sqlResultMeta">Execution Stats: 0.38 ms • 0 Anomalies Encountered • ACID Certified</div>
+          <div id="sqlResultTableContainer" class="sql-result-table-wrapper"></div>
+        </div>
+      </div>
+
+      <div class="sql-studio-grid">
+        <!-- UNF DDL Card -->
+        <div class="code-editor-card">
+          <div class="editor-header">
+            <div class="editor-tab-title">🔴 schema_unf_monolith.sql</div>
+            <button class="copy-btn" onclick="window.app.copyCode('unfSqlCode')">📋 Copy SQL</button>
+          </div>
+          <pre class="code-pre-box" id="unfSqlCode"></pre>
+        </div>
+
+        <!-- 3NF DDL Card -->
+        <div class="code-editor-card">
+          <div class="editor-header">
+            <div class="editor-tab-title">🟢 schema_3nf_normalized.sql</div>
+            <button class="copy-btn" onclick="window.app.copyCode('threeNfSqlCode')">📋 Copy SQL</button>
+          </div>
+          <pre class="code-pre-box" id="threeNfSqlCode"></pre>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- 12-Speaker Floating Teleprompter Drawer -->
+  <div id="teleprompterDrawerContainer"></div>
+
+  <!-- Viva Defense Hub Modal -->
+  <div id="vivaModal" class="modal-overlay" style="display: none;">
+    <div class="modal-content glass-panel glass-panel-glow">
+      <div class="modal-header">
+        <div style="display: flex; align-items: center; gap: 0.75rem;">
+          <span style="font-size: 1.5rem;">🎓</span>
+          <div>
+            <h2 style="font-size: 1.25rem; font-weight: 800; color: #0F172A;">TCET Module 5 Viva Defense Hub</h2>
+            <div style="font-size: 0.8rem; color: var(--text-muted);">12 Speaker Anticipated Viva Questions & Model Answers (Roll 49 to 60)</div>
+          </div>
+        </div>
+        <button class="icon-btn" onclick="window.presenterEngine.closeVivaModal()">✕</button>
+      </div>
+
+      <div id="vivaFlashcardsList" class="viva-cards-grid">
+        <!-- Rendered by presenterMode.js -->
+      </div>
+    </div>
+  </div>
+
+  <!-- Keyboard Shortcuts Modal -->
+  <div id="shortcutsModal" class="modal-overlay" style="display: none;">
+    <div class="modal-content glass-panel" style="max-width: 520px;">
+      <div class="modal-header">
+        <h3 style="font-size: 1.15rem; font-weight: 800;">⌨️ Presentation Keyboard Shortcuts</h3>
+        <button class="icon-btn" onclick="document.getElementById('shortcutsModal').style.display='none'">✕</button>
+      </div>
+      <div class="shortcuts-grid">
+        <div class="shortcut-row"><kbd>Space</kbd> / <kbd>→</kbd> <span>Advance to Next Normal Form / Speaker</span></div>
+        <div class="shortcut-row"><kbd>←</kbd> <span>Previous Normal Form / Speaker</span></div>
+        <div class="shortcut-row"><kbd>P</kbd> <span>Toggle Teleprompter Drawer</span></div>
+        <div class="shortcut-row"><kbd>V</kbd> <span>Open Viva Defense Hub</span></div>
+        <div class="shortcut-row"><kbd>1</kbd>–<kbd>5</kbd> <span>Switch Navigation Tabs</span></div>
+        <div class="shortcut-row"><kbd>M</kbd> <span>Toggle Audio Sound Effects</span></div>
+        <div class="shortcut-row"><kbd>T</kbd> <span>Toggle Dark Cyber / Frost Theme</span></div>
+        <div class="shortcut-row"><kbd>Esc</kbd> <span>Close Modals / Drawer</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast Notification Container -->
+  <div id="toastContainer" class="toast-container"></div>
+
+  <!-- Scripts -->
+  <script src="soundFx.js"></script>
+  <script src="particles.js"></script>
+  <script src="normalization.js"></script>
+  <script src="anomalySimulator.js"></script>
+  <script src="dependencyGraph.js"></script>
+  <script src="sandboxLab.js"></script>
+  <script src="presenterMode.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
