@@ -28,7 +28,7 @@
 
 ### Using Node.js (Recommended):
 ```bash
-node server.js
+node local_server.js
 ```
 Open **[http://localhost:5000](http://localhost:5000)** in your browser.
 
