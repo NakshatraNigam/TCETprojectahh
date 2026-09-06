@@ -60,15 +60,16 @@ Open **[http://localhost:5000](http://localhost:5000)** in your browser.
 edu-db-normalizer/
 ├── index.html              # Main single-page application structure
 ├── styles.css              # Cyberpunk & Neumorphic Design System
-├── app.js                  # Application controller & state management
-├── particles.js            # Particle canvas & confetti celebration engine
-├── soundFx.js              # Procedural Web Audio synthesizer
-├── normalization.js        # Normalization schemas, tables, and proofs
-├── dependencyGraph.js      # Interactive SVG laser dependency graph
-├── anomalySimulator.js     # Crash-Lab stress-test simulation engine
-├── sandboxLab.js           # Gamified decomposition sandbox
-├── presenterMode.js        # 12-Speaker presenter HUD & viva engine
-├── server.js               # Lightweight local static server
+├── vercel.json             # Static deployment configuration
+├── js/                     # Application JavaScript modules
+│   ├── app.js              # Application controller & state management
+│   ├── particles.js        # Particle canvas & confetti celebration engine
+│   ├── soundFx.js          # Procedural Web Audio synthesizer
+│   ├── normalization.js    # Normalization schemas, tables, and proofs
+│   ├── dependencyGraph.js  # Interactive SVG laser dependency graph
+│   ├── anomalySimulator.js # Crash-Lab stress-test simulation engine
+│   ├── sandboxLab.js       # Gamified decomposition sandbox
+│   └── presenterMode.js    # 12-Speaker presenter HUD & viva engine
 ├── speaker-cards/          # 12 Speaker cue cards (Speakers 49 to 60)
 │   ├── ALL_12_SPEAKERS_MASTER_CARDS.md
 │   ├── speaker_49_intro_and_problem.md
