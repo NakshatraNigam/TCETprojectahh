@@ -1,0 +1,9 @@
+{
+  "name": "schemamorph-3nf",
+  "version": "1.0.0",
+  "private": true,
+  "description": "TCET Module 5 SchemaMorph 3NF Database Normalization Studio",
+  "scripts": {
+    "build": "echo 'Static assets ready'"
+  }
+}
