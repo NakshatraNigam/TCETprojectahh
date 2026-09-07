@@ -4,3 +4,6 @@ Thumbs.db
 *.log
 local_server.js
 .vercel/
+__pycache__/
+*.pyc
+

@@ -12,7 +12,7 @@ You open the presentation. You introduce the team, the topic, and set the proble
 ---
 
 ### 2. 🗣️ Your Speaking Script
-> *"Good morning respected professors and peers. We are presenting our TCET Module 5 Inquiry-Based Learning project on Database Normalization to Third Normal Form (3NF).*
+> *"Good morning everyone. We are presenting our TCET Module 5 Inquiry-Based Learning project on Database Normalization to Third Normal Form (3NF).*
 >
 > *In university administration, student enrollments, course catalogs, faculty assignments, and department data are frequently entered into a single monolithic sheet. While this seems easy at first, it causes extreme data redundancy, bloated storage, and catastrophic operational bugs known as modification anomalies.*
 >

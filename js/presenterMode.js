@@ -347,124 +347,29 @@ class PresenterModeEngine {
     const el = document.getElementById("speakerTimerDisplay");
     if (!el) return;
     const mins = Math.floor(this.timerSeconds / 60);
-    const secs = this.timerSeconds % 60;
-    el.innerText = `${mins}:${secs < 10 ? '0' : ''}${secs}`;
-    if (this.timerSeconds <= 15) {
-      el.style.color = "#E11D48";
-    } else {
-      el.style.color = "#2563EB";
-    }
+  startTimer() {
+    // Disabled for clean background presentation mode
+  }
+
+  stopTimer() {
+    // Disabled
+  }
+
+  updateTimerDisplay() {
+    // Disabled
   }
 
   renderPresenterHUD() {
-    const container = document.getElementById("presenterBarContainer");
-    if (!container) return;
-
-    const speaker = PRESENTATION_SPEAKERS[this.currentSpeakerIndex];
-
-    container.innerHTML = `
-      <div class="presenter-hud-bar glass-panel">
-        <div class="presenter-identity-group">
-          <div class="speaker-avatar-badge">🎙️ Speaker ${speaker.speakerNumber} (Roll ${speaker.speakerNumber})</div>
-          <div class="speaker-title-info">
-            <strong>${speaker.title}</strong>
-            <span class="speaker-subtitle-text">${speaker.subtitle}</span>
-          </div>
-        </div>
-
-        <div class="speaker-selector-pills">
-          ${PRESENTATION_SPEAKERS.map((s, idx) => `
-            <button class="speaker-pill-btn ${idx === this.currentSpeakerIndex ? 'active' : ''}" 
-                    title="Speaker ${s.speakerNumber}: ${s.title}"
-                    onclick="window.presenterEngine.goToSpeaker(${idx})">
-              ${s.speakerNumber}
-            </button>
-          `).join('')}
-        </div>
-
-        <div class="presenter-hud-actions">
-          <div class="speaker-timer-box">
-            <span style="font-size: 0.72rem; color: var(--text-muted); font-weight: 700;">TIME</span>
-            <span id="speakerTimerDisplay" class="timer-digits">1:30</span>
-          </div>
-          <button class="ctrl-btn" onclick="window.presenterEngine.prevSpeaker()" ${this.currentSpeakerIndex === 0 ? 'disabled' : ''}>
-            ◀ Prev
-          </button>
-          <button class="primary-action-btn" onclick="window.presenterEngine.nextSpeaker()" ${this.currentSpeakerIndex === PRESENTATION_SPEAKERS.length - 1 ? 'disabled' : ''}>
-            Next Speaker ▶
-          </button>
-          <button class="icon-btn" onclick="window.presenterEngine.toggleTeleprompter()" title="Toggle Speaker Script Teleprompter">
-            ${this.isTeleprompterExpanded ? '📖' : '📜'}
-          </button>
-        </div>
-      </div>
-    `;
-    this.updateTimerDisplay();
+    // Clean background presentation mode: no HUD bar rendered
   }
 
   renderTeleprompter() {
-    const container = document.getElementById("teleprompterDrawerContainer");
-    if (!container) return;
+    // Clean background presentation mode: no teleprompter rendered
+  }
 
-    const currentSpeaker = PRESENTATION_SPEAKERS[this.currentSpeakerIndex];
-
-    if (!this.isTeleprompterExpanded) {
-      container.innerHTML = `
-        <div class="teleprompter-minimized-pill" onclick="window.presenterEngine.toggleTeleprompter()">
-          <span>🎙️ Speaker ${currentSpeaker.speakerNumber} Teleprompter (Click or press 'P' to open script)</span>
-          <span style="color: var(--accent-primary); font-weight: 800;">▲ Open</span>
-        </div>
-      `;
-      return;
-    }
-
-    const speaker = currentSpeaker;
-
-    container.innerHTML = `
-      <div class="teleprompter-card glass-panel glass-panel-glow">
-        <div class="teleprompter-header">
-          <div style="display: flex; align-items: center; gap: 0.75rem;">
-            <span class="academic-tag" style="background: #EFF6FF; color: #1D4ED8;">🎙️ Speaker ${speaker.speakerNumber} (Roll ${speaker.speakerNumber}) Script</span>
-            <span style="font-size: 0.8rem; font-weight: 700; color: #D97706; background: #FEF3C7; padding: 2px 8px; border-radius: 9999px;">
-              👉 Live Screen Action: ${speaker.actionPrompt}
-            </span>
-          </div>
-          <button class="icon-btn" style="width: 28px; height: 28px; font-size: 0.8rem;" onclick="window.presenterEngine.toggleTeleprompter()">✕</button>
-        </div>
-
-        <div class="teleprompter-grid">
-          <!-- Script Teleprompter -->
-          <div class="teleprompter-script-box">
-            <div style="font-size: 0.78rem; font-weight: 800; text-transform: uppercase; color: #2563EB; margin-bottom: 0.4rem;">
-              🗣️ Speaking Script (What to say):
-            </div>
-            ${speaker.script.map(para => `<p class="script-para">"${para}"</p>`).join('')}
-          </div>
-
-          <!-- Key Points & Viva Defense Tips -->
-          <div class="teleprompter-notes-box">
-            <div style="font-size: 0.78rem; font-weight: 800; text-transform: uppercase; color: #059669; margin-bottom: 0.4rem;">
-              🎯 Key Points to Emphasize:
-            </div>
-            <ul class="teleprompter-bullet-list">
-              ${speaker.speakingPoints.map(pt => `<li>${pt}</li>`).join('')}
-            </ul>
-
-            <div class="teleprompter-viva-box">
-              <div style="font-size: 0.76rem; font-weight: 800; color: #92400E; margin-bottom: 2px;">
-                💡 Expected Professor Viva Question:
-              </div>
-              <div style="font-size: 0.8rem; font-weight: 700; color: #0F172A; margin-bottom: 4px;">
-                Q: ${speaker.vivaQuestion}
-              </div>
-              <div style="font-size: 0.78rem; color: #334155; line-height: 1.4;">
-                <strong>Ans:</strong> ${speaker.vivaAnswer}
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    `;
+  toggleTeleprompter() {
+    // Open viva modal instead
+    this.openVivaModal();
   }
 
   openVivaModal() {
@@ -502,3 +407,4 @@ class PresenterModeEngine {
 }
 
 window.presenterEngine = new PresenterModeEngine();
+

@@ -22,7 +22,6 @@ class AppController {
     if (window.anomalySim) window.anomalySim.init();
     if (window.depGraph) window.depGraph.init();
     if (window.sandboxLab) window.sandboxLab.init();
-    if (window.presenterEngine) window.presenterEngine.init();
   }
 
   setupEventListeners() {
@@ -42,6 +41,14 @@ class AppController {
         soundBtn.innerHTML = enabled ? "🔊" : "🔇";
         soundBtn.title = enabled ? "Sound Effects Enabled" : "Sound Effects Muted";
         this.showToast(enabled ? "🔊 Sound Effects Enabled" : "🔇 Sound Effects Muted");
+      });
+    }
+
+    // Fullscreen toggle button
+    const fsBtn = document.getElementById("fullscreenToggleBtn");
+    if (fsBtn) {
+      fsBtn.addEventListener("click", () => {
+        this.toggleFullscreen();
       });
     }
 
@@ -72,6 +79,25 @@ class AppController {
     });
   }
 
+  toggleFullscreen() {
+    if (window.soundEngine) window.soundEngine.playClick();
+    if (!document.fullscreenElement) {
+      document.documentElement.requestFullscreen().catch(err => {
+        console.warn(`Fullscreen error: ${err.message}`);
+      });
+      const fsBtn = document.getElementById("fullscreenToggleBtn");
+      if (fsBtn) fsBtn.innerHTML = "🗗 Exit Fullscreen";
+      this.showToast("⛶ Fullscreen Presentation Mode Activated");
+    } else {
+      if (document.exitFullscreen) {
+        document.exitFullscreen();
+      }
+      const fsBtn = document.getElementById("fullscreenToggleBtn");
+      if (fsBtn) fsBtn.innerHTML = "⛶ Fullscreen";
+      this.showToast("🗗 Exited Fullscreen Mode");
+    }
+  }
+
   setupKeyboardShortcuts() {
     window.addEventListener("keydown", (e) => {
       // Avoid triggering when focused on input/textarea if any
@@ -87,10 +113,10 @@ class AppController {
           e.preventDefault();
           this.prevStage();
         }
-      } else if (e.key === "p" || e.key === "P") {
-        if (window.presenterEngine) window.presenterEngine.toggleTeleprompter();
-      } else if (e.key === "v" || e.key === "V") {
-        if (window.presenterEngine) window.presenterEngine.openVivaModal();
+      } else if (e.key === "f" || e.key === "F") {
+        this.toggleFullscreen();
+      } else if (e.key === "a" || e.key === "A") {
+        this.toggleAutoPlay();
       } else if (e.key === "t" || e.key === "T") {
         this.toggleTheme();
       } else if (e.key === "m" || e.key === "M") {
@@ -101,9 +127,6 @@ class AppController {
         if (modal) modal.style.display = modal.style.display === "flex" ? "none" : "flex";
       } else if (e.code === "Escape") {
         document.querySelectorAll(".modal-overlay").forEach(m => m.style.display = "none");
-        if (window.presenterEngine && window.presenterEngine.isTeleprompterExpanded) {
-          window.presenterEngine.toggleTeleprompter();
-        }
       } else if (["1", "2", "3", "4", "5"].includes(e.key)) {
         const tabs = ["storyboard", "anomaly", "graph", "sandbox", "sql"];
         const idx = parseInt(e.key) - 1;

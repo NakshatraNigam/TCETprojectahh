@@ -14,11 +14,11 @@ You demonstrate the **interactive gamified Sandbox** live. You click on attribut
 ### 2. 🗣️ Your Speaking Script
 > *"To prove the practical robustness of our normalization logic, we engineered an interactive Decomposition Sandbox laboratory.*
 >
-> *We invite our professors and peers to test relational decomposition interactively.*
+> *We invite everyone to test relational decomposition interactively.*
 >
 > *For example, in Mission 1 on screen, we identify and isolate the multi-valued Phone_Numbers attribute to enforce 1NF domain atomicity.*
 >
-> *When we click '✨ Verify Decomposition', our underlying validation engine checks the mathematical candidate keys, verifies attribute closure ($X^+$), awards instant score feedback (+150 XP), and advances to the next normal form challenge!"*
+> *When we click '✨ Verify Decomposition', our underlying validation engine checks the candidate keys, awards instant score feedback (+150 XP), and advances to the next normal form challenge!"*
 
 ---
 

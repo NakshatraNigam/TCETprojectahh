@@ -8,7 +8,7 @@
 - **Topic:** Introduction, Motivation & The Education Database Problem Statement
 - **Target Screen:** 🎬 Morph Studio (`UNF` Stage)
 - **Speaking Script:**
-  > *"Good morning respected professors and peers. We are presenting our TCET Module 5 Inquiry-Based Learning project on Database Normalization to Third Normal Form (3NF).*
+  > *"Good morning everyone. We are presenting our TCET Module 5 Inquiry-Based Learning project on Database Normalization to Third Normal Form (3NF).*
   > *In university administration, student enrollments, course catalogs, faculty assignments, and department data are frequently entered into a single monolithic sheet. While this seems easy at first, it causes extreme data redundancy, bloated storage, and catastrophic operational bugs known as modification anomalies.*
   > *Today, our 12-member team will demonstrate the live step-by-step mathematical decomposition of an unnormalized education database into a clean, ACID-compliant 3NF architecture with zero data loss."*
 - **Key Viva Q&A:**
@@ -144,14 +144,11 @@
 
 ---
 
-# 🎙️ SPEAKER 59 (Speaker 11 • Roll No. 59)
-- **Topic:** Interactive Live Sandbox Verification & Algorithmic Validation
-- **Target Screen:** 🎮 Decomposition Sandbox
-- **Speaking Script:**
+# 🎙️ SPEAKER 59 (Speaker 11 • Roll No. 59)- **Speaking Script:**
   > *"To prove the practical robustness of our normalization logic, we engineered an interactive Decomposition Sandbox laboratory.*
-  > *We invite our professors and peers to test relational decomposition interactively.*
+  > *We invite everyone to test relational decomposition interactively.*
   > *For example, in Mission 1 on screen, we identify and isolate the multi-valued Phone_Numbers attribute to enforce 1NF domain atomicity.*
-  > *When we click '✨ Verify Decomposition', our underlying validation engine checks the mathematical candidate keys, verifies attribute closure ($X^+$), awards instant score feedback (+150 XP), and advances to the next normal form challenge!"*
+  > *When we click '✨ Verify Decomposition', our underlying validation engine checks the candidate keys, awards instant score feedback (+150 XP), and advances to the next normal form challenge!"*
 - **Key Viva Q&A:**
   - **Q:** How does an algorithm determine if an attribute set $X$ is a Candidate Key?
   - **Ans:** It computes the attribute closure $X^+$ using Armstrong's axioms. If $X^+ = R$ (determines all attributes) and no proper subset of $X$ determines $R$, then $X$ is a minimal Candidate Key.
@@ -165,8 +162,8 @@
   > *"To conclude our presentation, we examine our production SQL DDL schema on screen.*
   > *On the left is the unnormalized monolith: prone to locking, duplicate updates, and null-key crashes.*
   > *On the right is our normalized 3NF production architecture: engineered with strict PRIMARY KEY constraints, FOREIGN KEY references, CHECK constraints on credits, and ON DELETE CASCADE on student contacts to prevent orphaned data.*
-  > *In summary, our 12-member team has transformed an anomaly-ridden university spreadsheet into a scalable, robust, ACID-compliant 3NF database architecture for Thakur College Of Engineering Technology.*
-  > *Thank you, respected professors and peers. We now invite any viva questions!"*
+  > *In summary, our 12-member team has transformed an anomaly-ridden university spreadsheet into a scalable, robust, ACID-compliant 3NF database architecture for Thakur College Of Engineering & Technology.*
+  > *Thank you everyone. We now invite any questions!"*
 - **Key Viva Q&A:**
   - **Q:** What is `ON DELETE CASCADE` and why is it used on `Student_Contacts`?
-  - **Ans:** `ON DELETE CASCADE` ensures that if a student is deleted from `Students`, all their associated contact numbers in `Student_Contacts` are automatically removed, preventing orphaned records.
+  - **Ans:** `ON DELETE CASCADE` ensures that if a student is deleted from `Students`, all their associated contact numbers in `Student_Contacts` are automatically removed, preventing orphaned records.leted from `Students`, all their associated contact numbers in `Student_Contacts` are automatically removed, preventing orphaned records.

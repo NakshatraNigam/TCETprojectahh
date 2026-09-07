@@ -18,9 +18,9 @@ You deliver the **grand finale and conclusion** of the presentation. You show th
 >
 > *On the right is our normalized 3NF production architecture: engineered with strict PRIMARY KEY constraints, FOREIGN KEY references, CHECK constraints on credits, and ON DELETE CASCADE on student contacts to prevent orphaned data.*
 >
-> *In summary, our 12-member team has transformed an anomaly-ridden university spreadsheet into a scalable, robust, ACID-compliant 3NF database architecture for Thakur College Of Engineering Technology.*
+> *In summary, our 12-member team has transformed an anomaly-ridden university spreadsheet into a scalable, robust, ACID-compliant 3NF database architecture for Thakur College Of Engineering & Technology.*
 >
-> *Thank you, respected professors and peers. We now invite any viva questions!"*
+> *Thank you everyone. We now invite any questions!"*
 
 ---
 

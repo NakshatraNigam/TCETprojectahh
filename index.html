@@ -31,7 +31,7 @@
       <div class="brand-icon pulse-glow">⚡</div>
       <div class="brand-info">
         <h1>SchemaMorph 3NF <span class="academic-tag">TCET • Module 5</span></h1>
-        <div class="header-meta">Thakur College Of Engineering & Technology • Group Presentation (Roll No. 49 to 60)</div>
+        <div class="header-meta">Interactive Database Normalization Studio • Group Presentation (Roll No. 49 to 60)</div>
       </div>
     </div>
 
@@ -46,23 +46,17 @@
 
     <!-- Header Actions -->
     <div class="header-actions">
-      <button id="themeToggleBtn" class="icon-btn" title="Toggle Cyber Dark / Frost Glass Light Mode">🌓</button>
-      <button id="soundToggleBtn" class="icon-btn" title="Sound Effects Enabled">🔊</button>
+      <button id="fullscreenToggleBtn" class="primary-action-btn pulse-glow" title="Toggle Fullscreen Presentation Mode (Press 'F')">
+        <span>⛶</span> Fullscreen
+      </button>
+      <button id="themeToggleBtn" class="icon-btn" title="Toggle Cyber Dark / Frost Glass Light Mode (Press 'T')">🌓</button>
+      <button id="soundToggleBtn" class="icon-btn" title="Toggle Sound FX (Press 'M')">🔊</button>
       <button id="shortcutsBtn" class="icon-btn" title="Keyboard Shortcuts (Press '?')">⌨️</button>
-      <button id="vivaModalBtn" class="ctrl-btn viva-action-btn" onclick="window.presenterEngine.openVivaModal()">
-        <span>🎓</span> Viva Defense Hub
-      </button>
-      <button class="primary-action-btn pulse-glow" onclick="window.presenterEngine.toggleTeleprompter()">
-        <span>🎙️</span> Speakers (49–60)
-      </button>
     </div>
   </header>
 
   <!-- Main Content Area -->
   <main class="main-wrapper">
-
-    <!-- 12-Speaker Presenter Deck & Timer HUD -->
-    <div id="presenterBarContainer"></div>
 
     <!-- ====================================================================
          1. MORPHING STORYBOARD VIEW
@@ -90,7 +84,7 @@
       <!-- Real-Time Relational Telemetry HUD Bar -->
       <div class="glass-panel telemetry-hud-bar">
         <div class="telemetry-card">
-          <div class="telemetry-label">Data Redundancy</div>
+          <div class="telemetry-label">Data Redundancy Rate</div>
           <div class="telemetry-value-row">
             <span id="redundancyScore" class="telemetry-num" style="color: #E11D48;">98%</span>
             <div class="telemetry-mini-bar">
@@ -132,7 +126,7 @@
         <div class="telemetry-divider"></div>
 
         <div class="telemetry-card">
-          <div class="telemetry-label">Normal Form Stage</div>
+          <div class="telemetry-label">Active Normal Form</div>
           <div class="telemetry-value-row">
             <span id="telemetryStageBadge" class="stage-pill badge-partial">UNF</span>
           </div>
@@ -144,18 +138,18 @@
         <div class="stage-info-content">
           <div class="stage-badge-row">
             <span id="stagePill" class="stage-pill badge-partial">Form Indicator</span>
-            <span class="academic-tag">Module 5 Formal Justification</span>
+            <span class="academic-tag">Module 5 Formal Invariant</span>
           </div>
           <h2 id="stageTitle" class="stage-title">Transformation Stage</h2>
           <p id="stageDesc" class="stage-desc">Description of table state.</p>
           <div id="stageJustification" class="justification-highlight">
-            <strong>Justification:</strong> Explanation of relational integrity rules.
+            <strong>Relational Invariant:</strong> Explanation of relational integrity rules.
           </div>
         </div>
 
         <div class="stage-math-box">
-          <div class="math-header">📐 Mathematical Theorem & Axioms</div>
-          <div id="stageMathFormula" class="math-formula">Formula Notation</div>
+          <div class="math-header">⚡ Core Normalization Rule & Logic</div>
+          <div id="stageMathFormula" class="math-formula">Rule Statement</div>
           <ul id="stageRulesList" class="math-rule-list">
             <!-- Rules list -->
           </ul>
@@ -177,8 +171,8 @@
       <div class="anomaly-grid">
         <!-- Scenario Selector -->
         <div class="glass-panel anomaly-selector-panel">
-          <div style="font-size: 0.85rem; font-weight: 800; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 0.05em;">
-            Select Anomaly Test Arena
+          <div style="font-size: 0.85rem; font-weight: 800; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.5rem;">
+            Select Operational Stress Test
           </div>
           <div id="anomalySelectorList" style="display:flex; flex-direction:column; gap:0.75rem;">
             <!-- Rendered by anomalySimulator.js -->
@@ -200,7 +194,7 @@
         <!-- SVG Canvas Area -->
         <div class="glass-panel graph-canvas-panel">
           <div class="graph-filters-bar">
-            <button class="graph-filter-chip active" data-filter="all" onclick="window.depGraph.setFilter('all')">All FDs</button>
+            <button class="graph-filter-chip active" data-filter="all" onclick="window.depGraph.setFilter('all')">All Dependencies</button>
             <button class="graph-filter-chip chip-partial" data-filter="partial" onclick="window.depGraph.setFilter('partial')">Partial (2NF Violations)</button>
             <button class="graph-filter-chip chip-transitive" data-filter="transitive" onclick="window.depGraph.setFilter('transitive')">Transitive (3NF Violations)</button>
             <button class="graph-filter-chip chip-full" data-filter="full" onclick="window.depGraph.setFilter('full')">Full Dependencies</button>
@@ -219,7 +213,7 @@
 
           <div>
             <h3 id="graphDetailTitle" style="font-size: 1.05rem; font-weight: 800; color: #0F172A; margin-bottom: 0.4rem;">
-              Click any node or arrow
+              Click any node or connector
             </h3>
             <div id="graphDetailFormula" class="math-formula" style="font-size: 0.82rem;">
               Interactive Laser Graph Active
@@ -232,14 +226,14 @@
           <hr style="border: none; border-top: 1px solid var(--glass-border-subtle);" />
 
           <div style="font-size: 0.8rem; font-weight: 800; color: var(--text-muted); text-transform: uppercase;">
-            Color & Laser Legend
+            Laser Flow Legend
           </div>
 
           <div class="fd-legend-item">
             <div class="legend-color-dot" style="background: var(--accent-rose);"></div>
             <div>
               <div class="legend-title">Partial Dependency (2NF Violation)</div>
-              <div class="legend-desc">Non-key attribute determined by a proper subset of the composite candidate key {StudentID, CourseID}.</div>
+              <div class="legend-desc">Determined by proper subset of composite candidate key {StudentID, CourseID}.</div>
             </div>
           </div>
 
@@ -255,7 +249,7 @@
             <div class="legend-color-dot" style="background: var(--accent-emerald);"></div>
             <div>
               <div class="legend-title">Full Dependency (Valid Relational Key)</div>
-              <div class="legend-desc">Attribute strictly requires the complete composite key {StudentID, CourseID} for determination.</div>
+              <div class="legend-desc">Attribute strictly requires the complete composite key {StudentID, CourseID}.</div>
             </div>
           </div>
         </div>
@@ -380,29 +374,6 @@
 
   </main>
 
-  <!-- 12-Speaker Floating Teleprompter Drawer -->
-  <div id="teleprompterDrawerContainer"></div>
-
-  <!-- Viva Defense Hub Modal -->
-  <div id="vivaModal" class="modal-overlay" style="display: none;">
-    <div class="modal-content glass-panel glass-panel-glow">
-      <div class="modal-header">
-        <div style="display: flex; align-items: center; gap: 0.75rem;">
-          <span style="font-size: 1.5rem;">🎓</span>
-          <div>
-            <h2 style="font-size: 1.25rem; font-weight: 800; color: #0F172A;">TCET Module 5 Viva Defense Hub</h2>
-            <div style="font-size: 0.8rem; color: var(--text-muted);">12 Speaker Anticipated Viva Questions & Model Answers (Roll 49 to 60)</div>
-          </div>
-        </div>
-        <button class="icon-btn" onclick="window.presenterEngine.closeVivaModal()">✕</button>
-      </div>
-
-      <div id="vivaFlashcardsList" class="viva-cards-grid">
-        <!-- Rendered by presenterMode.js -->
-      </div>
-    </div>
-  </div>
-
   <!-- Keyboard Shortcuts Modal -->
   <div id="shortcutsModal" class="modal-overlay" style="display: none;">
     <div class="modal-content glass-panel" style="max-width: 520px;">
@@ -411,14 +382,14 @@
         <button class="icon-btn" onclick="document.getElementById('shortcutsModal').style.display='none'">✕</button>
       </div>
       <div class="shortcuts-grid">
-        <div class="shortcut-row"><kbd>Space</kbd> / <kbd>→</kbd> <span>Advance to Next Normal Form / Speaker</span></div>
-        <div class="shortcut-row"><kbd>←</kbd> <span>Previous Normal Form / Speaker</span></div>
-        <div class="shortcut-row"><kbd>P</kbd> <span>Toggle Teleprompter Drawer</span></div>
-        <div class="shortcut-row"><kbd>V</kbd> <span>Open Viva Defense Hub</span></div>
+        <div class="shortcut-row"><kbd>Space</kbd> / <kbd>→</kbd> <span>Advance to Next Normal Form</span></div>
+        <div class="shortcut-row"><kbd>←</kbd> <span>Previous Normal Form</span></div>
+        <div class="shortcut-row"><kbd>F</kbd> <span>Toggle Fullscreen Presentation Mode</span></div>
+        <div class="shortcut-row"><kbd>A</kbd> <span>Toggle Auto-Morph Live Demonstration</span></div>
         <div class="shortcut-row"><kbd>1</kbd>–<kbd>5</kbd> <span>Switch Navigation Tabs</span></div>
-        <div class="shortcut-row"><kbd>M</kbd> <span>Toggle Audio Sound Effects</span></div>
-        <div class="shortcut-row"><kbd>T</kbd> <span>Toggle Dark Cyber / Frost Theme</span></div>
-        <div class="shortcut-row"><kbd>Esc</kbd> <span>Close Modals / Drawer</span></div>
+        <div class="shortcut-row"><kbd>M</kbd> <span>Toggle Procedural Audio Sound Effects</span></div>
+        <div class="shortcut-row"><kbd>T</kbd> <span>Toggle Dark Cyber / Frost Light Theme</span></div>
+        <div class="shortcut-row"><kbd>Esc</kbd> <span>Close Modals</span></div>
       </div>
     </div>
   </div>
@@ -433,7 +404,6 @@
   <script src="js/anomalySimulator.js"></script>
   <script src="js/dependencyGraph.js"></script>
   <script src="js/sandboxLab.js"></script>
-  <script src="js/presenterMode.js"></script>
   <script src="js/app.js"></script>
 </body>
 </html>

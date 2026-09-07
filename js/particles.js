@@ -8,7 +8,7 @@ class ParticleMatrix {
     if (!this.canvas) return;
     this.ctx = this.canvas.getContext("2d");
     this.particles = [];
-    this.symbols = ["1NF", "2NF", "3NF", "PK", "FK", "X → Y", "σ", "π", "⋈", "R(A,B)", "dom(A)", "X⁺"];
+    this.symbols = ["1NF", "2NF", "3NF", "PK", "FK", "SQL", "ACID", "TABLE", "KEY"];
     this.mouse = { x: null, y: null, radius: 140 };
     this.theme = "light";
     this.animationId = null;

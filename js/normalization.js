@@ -17,7 +17,7 @@ const NORMALIZATION_STAGES = [
     title: "Raw TCET Education Monolithic Sheet",
     description: "Contains repeating groups, multi-valued contact numbers, non-atomic attributes, and heavy data duplication across student registrations.",
     justification: "In UNF, all student, course, instructor, and department attributes reside in a single monolithic table. Multiple contact numbers exist within single cells (violating atomicity), leading to critical update, deletion, and insertion anomalies.",
-    mathFormula: "UNF(Attributes) = { R | ∃ A ∈ Attributes s.t. dom(A) is non-atomic }",
+    mathFormula: "Rule: Multiple values and repeating groups must not be stored in a single cell.",
     rules: [
       "Multi-valued attribute 'Phone_Numbers' contains comma-separated values.",
       "Repeating groups for students taking multiple courses.",
@@ -145,7 +145,7 @@ const NORMALIZATION_STAGES = [
     title: "1NF Transformation: Atomicity Enforced",
     description: "Multi-valued phone numbers are unbundled into atomic entries. A composite primary key (StudentID, CourseID, ContactNumber) uniquely identifies every tuple.",
     justification: "1NF Transformation Rule: A relation is in 1NF if and only if all underlying domains contain only atomic (indivisible) values, and there are no repeating groups. Multi-valued Contact Numbers are split into distinct records, ensuring each column value is atomic.",
-    mathFormula: "1NF ⟺ ∀ t ∈ R, ∀ A ∈ Attributes, t[A] ∈ atomic(dom(A))",
+    mathFormula: "Rule: Every attribute in every row must hold exactly ONE single atomic value.",
     rules: [
       "All attribute domains are strictly atomic (no comma-separated phone strings).",
       "Composite Primary Key identified: {Student_ID, Course_ID, Phone_Number}.",
@@ -200,7 +200,7 @@ const NORMALIZATION_STAGES = [
     title: "2NF Transformation: Full Functional Dependency",
     description: "Elimination of Partial Dependencies. Attributes depending only on a subset of the candidate key (StudentID or CourseID) are decomposed into distinct tables.",
     justification: "2NF Transformation Rule: A relation is in 2NF if it is in 1NF and no non-prime attribute is partially dependent on any candidate key. Student details depend solely on StudentID, while Course details depend solely on CourseID. We split the relation into Students, Student_Phones, Courses, and Student_Enrollments.",
-    mathFormula: "2NF ⟺ 1NF ∧ (∀ X → A, X is not a proper subset of any Candidate Key)",
+    mathFormula: "Rule: Must be in 1NF + No partial key dependencies (every non-key depends on full PK).",
     rules: [
       "Partial FD: StudentID → StudentName, DepartmentID eliminated.",
       "Partial FD: CourseID → CourseName, Credits, InstructorID eliminated.",
@@ -301,7 +301,7 @@ const NORMALIZATION_STAGES = [
     title: "3NF Transformation: Lossless & Transitive-Free",
     description: "All transitive dependencies (CourseID → InstructorID → Instructor Details, DeptID → Dept Details) are decomposed into dedicated Instructors and Departments tables.",
     justification: "3NF Transformation Rule: A relation is in 3NF if it is in 2NF and for every functional dependency X → A, either X is a superkey, or A is a prime attribute (part of candidate key). By separating Instructors and Departments, we eliminate all transitive anomalies while preserving dependencies and ensuring lossless join decomposition.",
-    mathFormula: "3NF ⟺ 2NF ∧ (∀ X → A, X is Superkey ∨ A ∈ Prime-Attributes)",
+    mathFormula: "Rule: Must be in 2NF + No transitive dependencies (no non-key determines another non-key).",
     rules: [
       "Transitive Chain 1: CourseID → InstructorID → {InstructorName, InstructorOffice, DeptID} resolved into 'Instructors'.",
       "Transitive Chain 2: DeptID → {DeptName, DeptBuilding} resolved into 'Departments'.",
