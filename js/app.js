@@ -2,6 +2,92 @@
    SchemaMorph 3NF - Main Application Controller & Orchestration
    ========================================================================== */
 
+const ROLL_MAPPINGS = {
+  49: {
+    roll: 49,
+    module: "Module 9: 3NF Lossless Schema Synthesis",
+    tab: "storyboard",
+    stage: 3,
+    description: "Third Normal Form (3NF) Final Lossless Decomposition"
+  },
+  50: {
+    roll: 50,
+    module: "Module 2: UNF Monolith & Redundancy Analysis",
+    tab: "storyboard",
+    stage: 0,
+    description: "UNF Monolith & Redundancy Analysis"
+  },
+  51: {
+    roll: 51,
+    module: "Module 3: Insertion Anomaly Stress-Testing",
+    tab: "anomaly",
+    anomalyIndex: 0,
+    description: "Live Insertion Anomaly Stress-Testing"
+  },
+  52: {
+    roll: 52,
+    module: "Module 4: Update & Deletion Anomalies",
+    tab: "anomaly",
+    anomalyIndex: 1,
+    description: "Live Update & Deletion Anomalies"
+  },
+  53: {
+    roll: 53,
+    module: "Module 5: 1NF Domain Atomicity Transformation",
+    tab: "storyboard",
+    stage: 1,
+    description: "1NF Domain Atomicity Transformation"
+  },
+  54: {
+    roll: 54,
+    module: "Module 6: Functional Dependency Graph Mapping",
+    tab: "graph",
+    filterType: "partial",
+    description: "Functional Dependency Graph (Partial FDs)"
+  },
+  55: {
+    roll: 55,
+    module: "Module 7: 2NF Partial Dependency Decomposition",
+    tab: "storyboard",
+    stage: 2,
+    description: "2NF Partial Dependency Decomposition"
+  },
+  56: {
+    roll: 56,
+    module: "Module 8: Transitive Dependency Identification",
+    tab: "graph",
+    filterType: "transitive",
+    description: "Transitive Dependency Identification"
+  },
+  57: {
+    roll: 57,
+    module: "Module 1: Introduction & Problem Statement",
+    tab: "storyboard",
+    stage: 0,
+    description: "Introduction, Universal Relation & Motivation"
+  },
+  58: {
+    roll: 58,
+    module: "Module 10: Mathematical Proofs: Lossless Join & Preservation",
+    tab: "storyboard",
+    stage: 3,
+    highlightProofs: true,
+    description: "Lossless Join Proofs & Dependency Preservation"
+  },
+  59: {
+    roll: 59,
+    module: "Module 11: Decomposition Sandbox Lab",
+    tab: "sandbox",
+    description: "Interactive Decomposition Sandbox Lab"
+  },
+  60: {
+    roll: 60,
+    module: "Module 12: Production SQL DDL & Conclusion",
+    tab: "sql",
+    description: "Production SQL DDL & Engineering Conclusion"
+  }
+};
+
 class AppController {
   constructor() {
     this.currentStageIndex = 0;
@@ -176,6 +262,47 @@ class AppController {
     } else if (tabName === "sandbox" && window.sandboxLab) {
       window.sandboxLab.init();
     }
+  }
+
+  // Direct Roll Number Jump (Roll No. 49 to 60)
+  goToRollNumber(rollNo) {
+    const mapping = ROLL_MAPPINGS[rollNo];
+    if (!mapping) return;
+
+    if (window.soundEngine) window.soundEngine.playLaser();
+
+    this.updateActiveRollButton(rollNo);
+
+    // Switch to target tab
+    this.switchTab(mapping.tab);
+
+    // Switch to target stage/scenario/filter
+    if (mapping.tab === "storyboard" && typeof mapping.stage === "number") {
+      setTimeout(() => {
+        this.goToStage(mapping.stage);
+        if (mapping.highlightProofs) {
+          const proofEl = document.querySelector(".theorem-proof-box");
+          if (proofEl) {
+            proofEl.scrollIntoView({ behavior: "smooth", block: "center" });
+            proofEl.classList.add("pulse-highlight");
+            setTimeout(() => proofEl.classList.remove("pulse-highlight"), 2000);
+          }
+        }
+      }, 70);
+    } else if (mapping.tab === "anomaly" && typeof mapping.anomalyIndex === "number" && window.anomalySim) {
+      setTimeout(() => window.anomalySim.selectScenario(mapping.anomalyIndex), 70);
+    } else if (mapping.tab === "graph" && mapping.filterType && window.depGraph) {
+      setTimeout(() => window.depGraph.setFilter(mapping.filterType), 70);
+    }
+
+    this.showToast(`🎯 Roll No. ${rollNo}: ${mapping.module}`);
+  }
+
+  updateActiveRollButton(rollNo) {
+    document.querySelectorAll(".roll-pill-btn").forEach(btn => {
+      const btnRoll = parseInt(btn.dataset.roll);
+      btn.classList.toggle("active", btnRoll === rollNo);
+    });
   }
 
   // Storyboard Step Controls

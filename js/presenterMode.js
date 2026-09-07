@@ -5,8 +5,8 @@
 
 const PRESENTATION_SPEAKERS = [
   {
-    speakerNumber: 49,
-    title: "49. Introduction & The Problem Statement",
+    speakerNumber: 57,
+    title: "57. Introduction & The Problem Statement",
     subtitle: "Setting the Stage: Why Database Normalization is Crucial",
     targetTab: "storyboard",
     targetStage: 0,
@@ -173,8 +173,8 @@ const PRESENTATION_SPEAKERS = [
     vivaAnswer: "If X → Y and Y → Z, where Y ⊄ X, X does not functionally determine Y, and Y is not a superkey, then X → Z is a transitive dependency."
   },
   {
-    speakerNumber: 57,
-    title: "57. Third Normal Form (3NF) Final Decomposition",
+    speakerNumber: 49,
+    title: "49. Third Normal Form (3NF) Final Decomposition",
     subtitle: "Achieving Pure, Transitive-Free Relational Architecture",
     targetTab: "storyboard",
     targetStage: 3,
