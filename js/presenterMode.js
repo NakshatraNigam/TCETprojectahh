@@ -5,8 +5,8 @@
 
 const PRESENTATION_SPEAKERS = [
   {
-    speakerNumber: 57,
-    title: "57. Introduction & The Problem Statement",
+    speakerNumber: 49,
+    title: "49. Introduction & The Problem Statement",
     subtitle: "Setting the Stage: Why Database Normalization is Crucial",
     targetTab: "storyboard",
     targetStage: 0,
@@ -173,8 +173,8 @@ const PRESENTATION_SPEAKERS = [
     vivaAnswer: "If X → Y and Y → Z, where Y ⊄ X, X does not functionally determine Y, and Y is not a superkey, then X → Z is a transitive dependency."
   },
   {
-    speakerNumber: 49,
-    title: "49. Third Normal Form (3NF) Final Decomposition",
+    speakerNumber: 57,
+    title: "57. Third Normal Form (3NF) Final Decomposition",
     subtitle: "Achieving Pure, Transitive-Free Relational Architecture",
     targetTab: "storyboard",
     targetStage: 3,
@@ -379,15 +379,27 @@ class PresenterModeEngine {
     if (!modal || !container) return;
 
     container.innerHTML = PRESENTATION_SPEAKERS.map((s, idx) => `
-      <div class="viva-flashcard">
-        <div style="display:flex; justify-content:space-between; align-items:center;">
-          <span class="viva-card-speaker">🎙️ Speaker ${s.speakerNumber} (Roll ${s.speakerNumber})</span>
-          <span class="academic-tag" style="font-size: 0.65rem; padding: 2px 6px;">Speaker ${idx + 1}/12</span>
+      <div class="viva-flashcard" id="vivaCard_${s.speakerNumber}">
+        <div style="display:flex; justify-content:space-between; align-items:flex-start; gap: 0.5rem; flex-wrap: wrap;">
+          <div>
+            <span class="viva-card-speaker">🎙️ Speaker ${idx + 1} • Roll No. ${s.speakerNumber}</span>
+            <div style="font-weight: 800; font-size: 0.95rem; color: var(--text-primary); margin-top: 0.25rem;">${s.title}</div>
+            <div style="font-size: 0.78rem; color: var(--text-muted);">${s.subtitle}</div>
+          </div>
+          <button class="primary-action-btn" style="font-size: 0.75rem; padding: 0.35rem 0.85rem; border-radius: var(--radius-full);"
+                  onclick="window.presenterEngine.closeVivaModal(); if(window.app) window.app.goToRollNumber(${s.speakerNumber});">
+            🚀 Open Screen (Roll ${s.speakerNumber})
+          </button>
         </div>
+
+        <div style="background: var(--bg-card-inner); padding: 0.65rem 0.85rem; border-radius: var(--radius-md); border: 1px solid var(--glass-border-subtle); margin: 0.5rem 0; font-size: 0.82rem; color: var(--text-secondary); line-height: 1.45;">
+          <strong>🗣️ Speaking Script:</strong> <em>"${s.script ? s.script[0] : ''}"</em>
+        </div>
+
         <div class="viva-card-q">
-          ❓ "${s.vivaQuestion}"
+          ❓ <strong>Viva Defense Q:</strong> "${s.vivaQuestion}"
         </div>
-        <button class="ctrl-btn" style="font-size: 0.75rem; padding: 0.35rem 0.75rem; align-self: flex-start;" 
+        <button class="ctrl-btn" style="font-size: 0.75rem; padding: 0.35rem 0.75rem; align-self: flex-start; margin-top: 0.25rem;" 
                 onclick="const ans = document.getElementById('vivaAns_${idx}'); ans.style.display = ans.style.display === 'none' ? 'block' : 'none';">
           👁️ Toggle Model Answer
         </button>

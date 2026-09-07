@@ -185,11 +185,11 @@ def create_report(output_path):
     set_table_borders(tbl_members, color_hex=HEX_BORDER_LIGHT, sz="4", inside_v=True)
 
     member_data = [
-        ("Module 9: 3NF Lossless Synthesis", "49", "Module 2: UNF Monolith & Redundancy", "50"),
+        ("Module 1: Problem Statement & Motivation", "49", "Module 2: UNF Monolith & Redundancy", "50"),
         ("Module 3: Insertion Anomaly Stress-Test", "51", "Module 4: Update & Deletion Anomalies", "52"),
         ("Module 5: 1NF Domain Atomicity", "53", "Module 6: Functional Dependency Graph", "54"),
         ("Module 7: 2NF Partial Dependency Removal", "55", "Module 8: Transitive Dependencies Trap", "56"),
-        ("Module 1: Problem Statement & Motivation", "57", "Module 10: Lossless Join & Preservation", "58"),
+        ("Module 9: 3NF Lossless Synthesis", "57", "Module 10: Lossless Join & Preservation", "58"),
         ("Module 11: Decomposition Sandbox Lab", "59", "Module 12: Production SQL DDL & ACID", "60")
     ]
 
@@ -252,7 +252,7 @@ def create_report(output_path):
         r.font.color.rgb = COLOR_NAVY
 
     division_rows = [
-        ("Roll No. 49", "Module 9: 3NF Lossless Schema Synthesis", "Synthesizing 6 final modular relations with determinants restricted to Superkeys."),
+        ("Roll No. 49", "Module 1: Introduction & Problem Statement", "Analysis of universal relations (R), enterprise motivation, and data bloat risks."),
         ("Roll No. 50", "Module 2: UNF Monolith & Redundancy Analysis", "Deconstruction of TCET_Enrollment_Master, repeating groups, and multi-value cells."),
         ("Roll No. 51", "Module 3: Insertion Anomaly Stress-Testing", "Demonstration of Entity Integrity constraint violations and NULL key insertion blocks."),
         ("Roll No. 52", "Module 4: Update & Deletion Anomalies", "Evaluation of duplicate-row inconsistency and irreversible cascading data loss."),
@@ -260,7 +260,7 @@ def create_report(output_path):
         ("Roll No. 54", "Module 6: Functional Dependency Graph Mapping", "Mapping partial dependencies (StudentID → Name, CourseID → Title) in 1NF."),
         ("Roll No. 55", "Module 7: 2NF Partial Dependency Decomposition", "Partitioning relations into Students, Student_Contacts, Courses_Master, Enrollments."),
         ("Roll No. 56", "Module 8: Transitive Dependency Identification", "Detecting non-key transitive links (CourseID → InstructorID → Office, DeptID → Building)."),
-        ("Roll No. 57", "Module 1: Introduction & Problem Statement", "Analysis of universal relations (R), enterprise motivation, and data bloat risks."),
+        ("Roll No. 57", "Module 9: 3NF Lossless Schema Synthesis", "Synthesizing 6 final modular relations with determinants restricted to Superkeys."),
         ("Roll No. 58", "Module 10: Lossless Join & Dependency Proofs", "Mathematical verification of (R1 ∩ R2 → R1) and canonical dependency preservation."),
         ("Roll No. 59", "Module 11: Decomposition Sandbox & Algorithm", "Interactive attribute closure (X+) validation engine, XP scoring, and streak system."),
         ("Roll No. 60", "Module 12: Production SQL DDL & Conclusion", "Engineering production DDL with FOREIGN KEY, CHECK, and ON DELETE CASCADE constraints.")

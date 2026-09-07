@@ -5,10 +5,10 @@
 const ROLL_MAPPINGS = {
   49: {
     roll: 49,
-    module: "Module 9: 3NF Lossless Schema Synthesis",
+    module: "Module 1: Introduction & Problem Statement",
     tab: "storyboard",
-    stage: 3,
-    description: "Third Normal Form (3NF) Final Lossless Decomposition"
+    stage: 0,
+    description: "Introduction, Universal Relation & Motivation"
   },
   50: {
     roll: 50,
@@ -61,10 +61,10 @@ const ROLL_MAPPINGS = {
   },
   57: {
     roll: 57,
-    module: "Module 1: Introduction & Problem Statement",
+    module: "Module 9: 3NF Lossless Schema Synthesis",
     tab: "storyboard",
-    stage: 0,
-    description: "Introduction, Universal Relation & Motivation"
+    stage: 3,
+    description: "Third Normal Form (3NF) Final Lossless Decomposition"
   },
   58: {
     roll: 58,
@@ -147,11 +147,26 @@ class AppController {
     }
 
     // Shortcuts modal button
+    // Shortcuts modal button
     const shortcutsBtn = document.getElementById("shortcutsBtn");
     if (shortcutsBtn) {
       shortcutsBtn.addEventListener("click", () => {
         const modal = document.getElementById("shortcutsModal");
         if (modal) modal.style.display = "flex";
+      });
+    }
+
+    // Viva & Speaker cue cards modal buttons
+    const vivaBtn = document.getElementById("vivaModalBtn");
+    if (vivaBtn) {
+      vivaBtn.addEventListener("click", () => {
+        this.openVivaModal();
+      });
+    }
+    const rollVivaBtn = document.getElementById("rollNavVivaBtn");
+    if (rollVivaBtn) {
+      rollVivaBtn.addEventListener("click", () => {
+        this.openVivaModal();
       });
     }
 
@@ -163,6 +178,21 @@ class AppController {
         }
       });
     });
+  }
+
+  openVivaModal() {
+    if (window.soundEngine) window.soundEngine.playClick();
+    if (window.presenterEngine && typeof window.presenterEngine.openVivaModal === "function") {
+      window.presenterEngine.openVivaModal();
+      return;
+    }
+    const modal = document.getElementById("vivaModal");
+    if (modal) modal.style.display = "flex";
+  }
+
+  closeVivaModal() {
+    const modal = document.getElementById("vivaModal");
+    if (modal) modal.style.display = "none";
   }
 
   toggleFullscreen() {
@@ -208,6 +238,8 @@ class AppController {
       } else if (e.key === "m" || e.key === "M") {
         const soundBtn = document.getElementById("soundToggleBtn");
         if (soundBtn) soundBtn.click();
+      } else if (e.key === "v" || e.key === "V") {
+        this.openVivaModal();
       } else if (e.key === "?" || e.key === "/") {
         const modal = document.getElementById("shortcutsModal");
         if (modal) modal.style.display = modal.style.display === "flex" ? "none" : "flex";

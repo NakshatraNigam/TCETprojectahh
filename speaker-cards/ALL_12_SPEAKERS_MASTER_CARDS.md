@@ -4,7 +4,7 @@
 
 ---
 
-# 🎙️ SPEAKER 57 (Speaker 1 • Roll No. 57)
+# 🎙️ SPEAKER 49 (Speaker 1 • Roll No. 49)
 - **Topic:** Introduction, Motivation & The Education Database Problem Statement
 - **Target Screen:** 🎬 Morph Studio (`UNF` Stage)
 - **Speaking Script:**
@@ -116,7 +116,7 @@
 
 ---
 
-# 🎙️ SPEAKER 49 (Speaker 9 • Roll No. 49)
+# 🎙️ SPEAKER 57 (Speaker 9 • Roll No. 57)
 - **Topic:** Third Normal Form (3NF) Final Lossless Decomposition
 - **Target Screen:** 🎬 Morph Studio (`3NF` Stage)
 - **Speaking Script:**

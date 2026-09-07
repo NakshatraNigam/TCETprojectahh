@@ -46,6 +46,9 @@
 
     <!-- Header Actions -->
     <div class="header-actions">
+      <button id="vivaModalBtn" class="primary-action-btn pulse-glow viva-action-btn" title="Open 12-Speaker Cue Cards & Viva Defense Hub (Press 'V')">
+        <span>🎙️</span> Speaker Cards
+      </button>
       <button id="fullscreenToggleBtn" class="primary-action-btn pulse-glow" title="Toggle Fullscreen Presentation Mode (Press 'F')">
         <span>⛶</span> Fullscreen
       </button>
@@ -63,9 +66,9 @@
         <span class="roll-nav-label">Roll Jump:</span>
       </div>
       <div class="roll-nav-pills" id="rollNavPills">
-        <button class="roll-pill-btn" data-roll="49" title="Roll No. 49 • Module 9: 3NF Lossless Schema Synthesis" onclick="window.app.goToRollNumber(49)">
+        <button class="roll-pill-btn active" data-roll="49" title="Roll No. 49 • Module 1: Introduction & Problem Statement" onclick="window.app.goToRollNumber(49)">
           <span class="roll-pill-badge">49</span>
-          <span class="roll-pill-label">3NF Synthesis</span>
+          <span class="roll-pill-label">Intro & Problem</span>
         </button>
         <button class="roll-pill-btn" data-roll="50" title="Roll No. 50 • Module 2: UNF Monolith & Redundancy Analysis" onclick="window.app.goToRollNumber(50)">
           <span class="roll-pill-badge">50</span>
@@ -95,9 +98,9 @@
           <span class="roll-pill-badge">56</span>
           <span class="roll-pill-label">Transitive Traps</span>
         </button>
-        <button class="roll-pill-btn active" data-roll="57" title="Roll No. 57 • Module 1: Introduction & Problem Statement" onclick="window.app.goToRollNumber(57)">
+        <button class="roll-pill-btn" data-roll="57" title="Roll No. 57 • Module 9: 3NF Lossless Schema Synthesis" onclick="window.app.goToRollNumber(57)">
           <span class="roll-pill-badge">57</span>
-          <span class="roll-pill-label">Intro & Problem</span>
+          <span class="roll-pill-label">3NF Synthesis</span>
         </button>
         <button class="roll-pill-btn" data-roll="58" title="Roll No. 58 • Module 10: Mathematical Proofs: Lossless Join & Preservation" onclick="window.app.goToRollNumber(58)">
           <span class="roll-pill-badge">58</span>
@@ -454,6 +457,23 @@
     </div>
   </div>
 
+  <!-- 12-Speaker Cue Cards & Viva Defense Hub Modal -->
+  <div id="vivaModal" class="modal-overlay" style="display: none;">
+    <div class="modal-content glass-panel" style="max-width: 1100px;">
+      <div class="modal-header">
+        <div>
+          <div class="academic-tag" style="margin-bottom: 4px;">TCET Module 5 Inquiry-Based Learning</div>
+          <h3 style="font-size: 1.35rem; font-weight: 800; color: var(--text-primary);">🎙️ 12-Speaker Master Cue Cards & Viva Defense Hub</h3>
+          <div style="font-size: 0.82rem; color: var(--text-muted);">Dedicated scripts, target screens, and model defense Q&A for Roll No. 49 through 60</div>
+        </div>
+        <button class="icon-btn" onclick="document.getElementById('vivaModal').style.display='none'">✕</button>
+      </div>
+      <div id="vivaFlashcardsList" class="viva-cards-grid">
+        <!-- Dynamically rendered by presenterMode.js -->
+      </div>
+    </div>
+  </div>
+
   <!-- Toast Notification Container -->
   <div id="toastContainer" class="toast-container"></div>
 
@@ -464,6 +484,7 @@
   <script src="js/anomalySimulator.js"></script>
   <script src="js/dependencyGraph.js"></script>
   <script src="js/sandboxLab.js"></script>
+  <script src="js/presenterMode.js"></script>
   <script src="js/app.js"></script>
 </body>
 </html>
